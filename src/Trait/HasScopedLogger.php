@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AZakhozhiy\ScopedLogger\Trait;
 
 use AZakhozhiy\ScopedLogger\Contract\ScopedLoggerInterface;
@@ -8,13 +10,15 @@ trait HasScopedLogger
 {
     protected ScopedLoggerInterface $scopedLogger;
 
-    public function setScopedLogger(ScopedLoggerInterface $scopedLogger): static{
+    public function setScopedLogger(ScopedLoggerInterface $scopedLogger): static
+    {
         $this->scopedLogger = $scopedLogger;
 
         return $this;
     }
 
-    public function getScopedLogger(): ScopedLoggerInterface{
+    public function getScopedLogger(): ScopedLoggerInterface
+    {
         return $this->scopedLogger;
     }
 }

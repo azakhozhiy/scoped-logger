@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AZakhozhiy\ScopedLogger\Contract;
 
 use Psr\Log\LoggerInterface;

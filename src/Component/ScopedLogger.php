@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AZakhozhiy\ScopedLogger\Component;
 
 use AZakhozhiy\ScopedLogger\Contract\ScopedLoggerInterface;
@@ -10,7 +12,11 @@ class ScopedLogger implements ScopedLoggerInterface, LoggerInterface
     protected array $scopes = [];
     protected string $cachedPrefix = '';
     protected string $messageDelimiter = ':';
-    protected LoggerInterface $logger;
+
+    public function __construct(protected LoggerInterface $logger)
+    {
+
+    }
 
     public function setMessageDelimiter(string $value): static
     {
@@ -41,8 +47,8 @@ class ScopedLogger implements ScopedLoggerInterface, LoggerInterface
 
     public function removeScope(string $scope): static
     {
-        foreach($this->scopes as $index => $value) {
-            if($value === $scope) {
+        foreach ($this->scopes as $index => $value) {
+            if ($value === $scope) {
                 unset($this->scopes[$index]);
                 $this->cachedPrefix = '';
                 break;
@@ -52,19 +58,22 @@ class ScopedLogger implements ScopedLoggerInterface, LoggerInterface
         return $this;
     }
 
-    public function clearScope(): static{
+    public function clearScope(): static
+    {
         $this->scopes = [];
         $this->cachedPrefix = '';
 
         return $this;
     }
 
-    public function getCombinedScope(): string{
+    public function getCombinedScope(): string
+    {
         return implode(' ', $this->scopes);
     }
 
-    public function getPrefix(): string{
-        if(!empty($this->cachedPrefix)){
+    public function getPrefix(): string
+    {
+        if (!empty($this->cachedPrefix)) {
             return $this->cachedPrefix;
         }
 
