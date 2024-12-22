@@ -1,0 +1,39 @@
+{
+  "name": "azakhozhiy/scoped-logger",
+  "version": "1.0.1",
+  "description": "Scoped Logger",
+  "authors": [
+    {
+      "name": "Aleksandr Zakhozhiy",
+      "email": "azakhozhiiy@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.3",
+    "psr/log": "^3.0"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.4",
+    "roave/security-advisories": "dev-latest",
+    "phpunit/phpunit": "^9.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "AZakhozhiy\\ScopedLogger\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "AZakhozhiy\\ScopedLogger\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "csf": [
+      "./vendor/bin/php-cs-fixer fix src --using-cache=no --allow-risky=yes"
+    ],
+    "clb": [
+      "git branch | grep -v $(git branch --show-current) | grep -v \"master\" | xargs git branch -D"
+    ]
+  },
+  "minimum-stability": "stable"
+}
